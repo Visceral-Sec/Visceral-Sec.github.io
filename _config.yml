@@ -18,13 +18,13 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Visceral-Sec-Blog
-email: visceral-sec@gmail.com
+title: Vscrl-Sec
+email: Visceral-sec@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Cyber-Security, Sociology, Psychology and personal Blog 
+  Cyber-Security blog blending thoughts and concepts from different domains such as philosophy, psychology and sociology.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://VisceralSec.github.io" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: Visceral-Sec
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+twitter_username: Vscrl3
 github_username:  Visceral-Sec
 
 # Build settings
