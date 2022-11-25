@@ -3,6 +3,7 @@ layout: post
 title:  "The Untapped Potential of Sound"
 date:   2022-10-28 13:37:00 -0700
 categories: Psychology, Cyber-Security
+author: Archer B & University Friends
 ---
 # The Untapped Potenital of Sound within Cyber-Security
 
@@ -24,7 +25,7 @@ impact on disk latency](https://www.youtube.com/watch?v=tDacjrSCeq4), Therefore 
 
 At some-point we joked around about how if we linked up network traffic to a synthesier we could pull some trickery to emulate the [Imperial March](https://www.youtube.com/watch?v=-bzWSJG93P8) or [Vivaldi's winter](https://youtu.be/TZCfydWF48c?t=70). 
 
-After letting this thought sit for a hot minute, letting my brain run through the possibilites; The **potential** this joke idea had dawned on me.
+After this idea sit in my brain and running through the possibilites; The **potential** this joke idea had dawned on me.
 
 # The marvelous simplicity
 
@@ -87,8 +88,7 @@ Afterwards I load in the packet into a class using a simple switch statement (re
                     packetProtocols.L7 = protocol
 ```
 Not exactly the most eloequent of solutions but works well enough for a proof of concept.
-
-The synthezier function quite simply searchs for substrings within the different protocols and plays a sound accordingly. For example HTTP packets will play "Sounds/Piano11.mp3". 
+The synthezier function quite simply searchs for substrings within the different protocols using a if statement and plays a sound accordingly. For example HTTP packets will play "Sounds/Piano11.mp3".  Small code extract:
 ```
 def PacketSynthesizer(packetProtocols):
     #https://docs.oracle.com/cd/E19455-01/806-0916/ipov-10/index.html
@@ -107,37 +107,21 @@ def PacketSynthesizer(packetProtocols):
                 playsound('Sounds/Piano17.mp3', False)
             else:
                 playsound('Sounds/Piano13.mp3', False)
-        elif "UDP" in packetProtocols.L3:
-            if "DNS" in packetProtocols.L3:
-                playsound('Sounds/Piano11.mp3', False)
-            elif "SSDP" in packetProtocols.L3:
-                playsound('Sounds/Piano19.mp3', False)
-            if "SSDP" in packetProtocols.L3:
-                playsound('Sounds/Piano114.mp3', False)
-            if "QUIC" in packetProtocols.L3:
-                playsound('Sounds/Piano18.mp3')
-            else:
-                playsound('Sounds/Piano125.mp3', False)
-        else: 
-            print("not fully implemented (POC)")
-
-    if packetProtocols.L1 == "Ether ":
-        match packetProtocols.L2:
-            case " IP ":
-                transportLayer(packetProtocols, "IP")
-            case "ARP":
-                playsound('Sounds/Piano125.mp3', False)
-            case "ICMP":
-                playsound('Sounds/Piano113.mp3', False)
-    elif packetProtocols.L1 == "Token Ring":
-        print("Not Implemented")
-    else:
-        print("Not fully implemented (POC)")
 ```
+Here's a video of the code in action:
+<iframe width="420" height="315" src="https://www.youtube.com/watch?v=lMUlPl2dn_c&feature=youtu.be" frameborder="0" allowfullscreen></iframe>
 
 All Code can be found here:
 [Git-Hub Siren.py](https://github.com/Visceral-Sec/Siren.Py)
 
 # Conclusion
 
-For a more specific example, I envison security operation theatres (SOCs) using this noise at just a low enough volume as to where it becomes meer background noise but any major changes are audible. 
+This blog's really only just proved that idea is technically feasiable. So I've decided to list some potential ideas that would greatly improve upon my afternoon's proof of concept:
+
+- Potentially could use the first couple of layers to influence the sound rather than define sound, so for example if the traffic is ethernet rather than wifi the pitch could be increased by a couple of HZ
+- Instead of creating a sound per packet, use an algorithm to represent each packet based on a % of network traffic or on how common they occur. So more obscure traffic isn't drowned out in the defeaning sound of a youtube video.
+- if you wanted a more "musical" rendition of the network you could classify different packet behaviour and use them to represent melodies of differnet cords, for example a website request could be a E Major.
+
+To clarify, I dont mean to say that this method is meant as a replacement to any actual intrusion detection systems. 
+My only real hope is that this idea can give some cyber creditability to that innate **visceral** feeling of something being wrong.
+
