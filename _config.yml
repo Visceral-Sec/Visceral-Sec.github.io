@@ -28,7 +28,7 @@ twitter_username: Vscrl3
 github_username:  Visceral-Sec
 
 # Build settings
-theme: minima
+remote_theme: Visceral-Sec/minima-blog-edit
 plugins:
   - jekyll-feed
 

@@ -47,21 +47,22 @@ I decided to use [scapy](https://scapy.net/) to handle the intrsicates of the ne
 ```
 sniff = scapy.sniff(prn=lambda x:protocolExtractor(x.summary()))
 ```
-The "prn" paramater allows me to individually execute a lambda function on each packet. This prevents me from having to code a queue system for the packets and as the code isn't multi-threaaded they should automatically queue. Additionally, I can pass a summarisation of the packet using .summary, which as we only really need to know what type of packet is saves me a lot of parsing. This one line of code alone really allowed me to get this proof of concept going without too much issue. Highly recommend scapy if anyone wants to mess around anything network based in python.
+The "prn" paramater allows me to individually execute a lambda function on each packet. This prevents me from having to code a queue system as the code isn't multi-threaaded they should automatically queue. Additionally, I can pass a summarisation of the packet using .summary which saves me from parsing the entirety of packet. This one line of code alone really allowed me to get this proof of concept going without too much issue. Highly recommend scapy if anyone wants to mess around with anything network based in python.
 
-With network traffic now flowing, I needed to develop a method of identifying what a packet was. For this POC I decided that protocols were the eaiest way to differentiate between packets.
+With network traffic now flowing, I needed to develop a method of identifying packets. For this POC I decided that protocols were the eaiest way to differentiate between packets.
 Thankfully, using .summary, scapy present the packets in the following format:
 ```
 Ether / ARP who has 172.16.3.76 says 172.16.0.1 / Padding
 ```
-Using python's .split method I can pretty simply differate the different protocol layers and it's summarised data:
+Using python's .split method I can pretty simply differate the different protocol layers and the summarised data. 
 ```
 packetSplit = scapyPacket.split("/") # Splits up the layers
     # Loops through the split array
     for i in range(len(packetSplit)):
             protocolHandler(packetSplit[i], i)
 ```
-Afterwards I load in the packet into a class using a simple switch statement (requires python 3.10+ to use) and then the objecti s passed to the synthesier function.
+To make passing the protocols do functions easier I decided to implement a class which quite simply exists for data storage for packet's different protocols. I decided to use a class as it makes the code easier to read as well as to add future additions.
+Afterwards I load in the packet into a class using a simple switch statement (requires python 3.10+ to use) and then the object is passed to the synthesier function.
 ```
  def protocolHandler(protocol,layer):
         # Loads the Classes
