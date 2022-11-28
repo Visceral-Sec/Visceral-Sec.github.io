@@ -19,9 +19,9 @@ Following this line I thought I questioned whenever if I could reduce the scale 
 
 If we could apply anomaly based detection to a individual process. Wouldn't it give binary exploitators an obsctale they haven't faced before? If we could create an accurate baseline for processes, then techniques such as ROP chains would become easily be detectable as the process system behaviour would greatly differ from the baseline.
 
-I did some quick inital searches to see if this idea was already well-established and pre-existing solutions were already out there but I couldn't find much. I stumbled across owasp's [App Sensor](https://owasp.org/www-project-appsensor/) which wasn't exactly waht I envisoned but was clearly born of the same concept. Some alternatatives I found were [SELinux](https://www.redhat.com/en/topics/linux/what-is-selinux) and docker security stripping methods. Both of which didn't incorporate anomaly detection methods but were focused on more specific process security such as limitng systemcalls.
+I did some quick inital searches to see if this idea was already well-established and pre-existing solutions were already out there but I couldn't find much. I stumbled across owasp's [App Sensor](https://owasp.org/www-project-appsensor/) which wasn't exactly what I envisoned but was clearly born of the same concept. Some alternatives found were [SELinux](https://www.redhat.com/en/topics/linux/what-is-selinux) and docker security stripping methods. Both of which didn't incorporate anomaly detection methods but were focused on more specific process security such as limitng systemcalls.
 
---- Cool Sentence about why I decided to purse the idea myself ---
+--- Cool Sentence about why I decided to puruse the idea myself ---
 
 # Kernel Fears
 
