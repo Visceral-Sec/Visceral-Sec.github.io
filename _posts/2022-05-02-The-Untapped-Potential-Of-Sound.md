@@ -45,7 +45,7 @@ What if we could potentially use our own couscious processing as a anomlous dete
 I develve into this idea a little further, I decided to whip up a quick python proof concept to try and replicate something close to what I envisoned.
 
 I decided to use [scapy](https://scapy.net/) to handle the intrsicates of the network stack and through the magic of python libraries managed to start reading network traffic with just one line:
-```
+```Python
 sniff = scapy.sniff(prn=lambda x:protocolExtractor(x.summary()))
 ```
 The "prn" paramater allows me to individually execute a lambda function on each packet. This prevents me from having to code a queue system as the code isn't multi-threaaded they should automatically queue. Additionally, I can pass a summarisation of the packet using .summary which saves me from parsing the entirety of packet. This one line of code alone really allowed me to get this proof of concept going without too much issue. Highly recommend scapy if anyone wants to mess around with anything network based in python.
@@ -56,7 +56,7 @@ Thankfully, using .summary, scapy present the packets in the following format:
 Ether / ARP who has 172.16.3.76 says 172.16.0.1 / Padding
 ```
 Using python's .split method I can pretty simply differate the different protocol layers and the summarised data. 
-```
+```Python
 packetSplit = scapyPacket.split("/") # Splits up the layers
     # Loops through the split array
     for i in range(len(packetSplit)):
@@ -64,7 +64,7 @@ packetSplit = scapyPacket.split("/") # Splits up the layers
 ```
 To make passing the protocols do functions easier I decided to implement a class which quite simply exists for data storage for packet's different protocols. I decided to use a class as it makes the code easier to read as well as to add future additions.
 Afterwards I load in the packet into a class using a simple switch statement (requires python 3.10+ to use) and then the object is passed to the synthesier function.
-```
+```Python
  def protocolHandler(protocol,layer):
         # Loads the Classes
         if "Raw" in packetSplit[i]:
@@ -89,7 +89,7 @@ Afterwards I load in the packet into a class using a simple switch statement (re
 ```
 Not exactly the most eloequent of solutions but works well enough for a proof of concept.
 The synthezier function quite simply searchs for substrings within the different protocols using a if statement and plays a sound accordingly. For example HTTP packets will play "Sounds/Piano11.mp3".  Small code extract:
-```
+```Python
 def PacketSynthesizer(packetProtocols):
     #https://docs.oracle.com/cd/E19455-01/806-0916/ipov-10/index.html
         # Called Once transport layer is reached (Done for readability, not the most efficiency)
@@ -108,9 +108,8 @@ def PacketSynthesizer(packetProtocols):
             else:
                 playsound('Sounds/Piano13.mp3', False)
 ```
-Here's a video of the code in action:
+[Here's a video of the code in action:](https://www.youtube.com/watch?v=lMUlPl2dn_c&feature=youtu.be")
 <iframe width="420" height="315" src="https://www.youtube.com/watch?v=lMUlPl2dn_c&feature=youtu.be" frameborder="0" allowfullscreen></iframe>
-
 All Code can be found here:
 [Git-Hub Siren.py](https://github.com/Visceral-Sec/Siren.Py)
 
