@@ -108,3 +108,5 @@ between anomalies and threats.
 - curse of dimensionality
 
 - How significant of an impact should it have? Why not use patterns in different parts of processes?
+
+- 
