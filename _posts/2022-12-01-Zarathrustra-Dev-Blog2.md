@@ -109,4 +109,4 @@ between anomalies and threats.
 
 - How significant of an impact should it have? Why not use patterns in different parts of processes?
 
-- 
+- How reliable is time during operation? Could adversial prebutation use times effectively?
