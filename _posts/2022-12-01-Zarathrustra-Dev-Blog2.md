@@ -85,6 +85,6 @@ Picture an Admin portal login. On its own, it’s not too unusual but a admin lo
 
 However, time could potentially create too much data. Within machine-learning and Ai in general there is a term called "curse of dimensionality". The curse of dimensionality refers to how introducing too features can make the data increasingly difficult to analyse and interpret. Adding too many data-points can lead to over-fitting where new data is unable to generalized. 
 
-Taking this into account, how would you represent the importance of Christmas in a ML model? In a regression/supervised model you could quite easily specify certain criteria for Christmas but what about classification models? But what about classification? Time itself can be easily identified but how do we represent the importance of more societally/abstract importance of time such as a national holiday? 
+Taking this into account, how would you represent the importance of Christmas in a ML model? In a regression/supervised model you could quite easily specify certain criteria for Christmas but what about classification? Time itself can be easily identified but how do we represent the importance of more societally/abstract importance of time such as a national holiday? 
 
 How reliable is the time reading during operation? Going back to our frog in the pan problem, could time be manipulated on a system to make certain actions be acceptable during a window of time? For example, a adversary could potentially could train the model to allow some specific malicious traffic at an arbitrary time. 
