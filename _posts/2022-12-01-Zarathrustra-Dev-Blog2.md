@@ -40,11 +40,12 @@ Instead of a three separate model approach you combine them both, each different
 - A machine-learning model evolving the baseline based on the new gathered data.
 - Continuous evaluation of the processes’ "threat-level"
 
-### For
+#### For
 - Theoretically infinitely scaling; you can train the data for as long as the process is running. Therefore can get as close as possible to a "baseline" (An idea expanded upon in the bottom)
 - Doesn't rely on old-data, the training data in the separation model could become outdated and not reflect the current workings of the process.
 - Regression allows a more specific reading on a process, having a quantifiable reading of "anomalous activity" means you can also directly classify it. (Reading over let's say 0.7 = anomalous activity) 
-### Against
+
+####  Against
 - Difficult to code effectively, multi-threading as well as a combination of high-level and low-level languages work in tandem.  
 - Not sure how possible a regression model would be to implement for processes, so assuming a high potential for a kernel fear
 - Really hard to pinpoint what's an anomaly and what's just a feature that hasn't had recorded usage.
